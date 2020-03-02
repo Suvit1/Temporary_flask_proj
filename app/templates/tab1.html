@@ -1,0 +1,217 @@
+<!Doctype html>
+<html>
+	<head>
+		<title>e-FIR-portal</title>
+
+		<style>
+			table, th, td {
+				border: 1px solid black;
+				border-collapse: collapse;
+			}
+			th, td {
+				padding: 15px;
+				text-align: center;
+			}
+			th {
+				background-color: #3498DB;
+			}
+			table {
+				border-spacing: 5px;
+				background-color: #d4e2fc;
+			}
+			.dropbtn {
+				background-color: #3498DB;
+				color: white;
+				padding: 16px;
+				font-size: 16px;
+				border: none;
+				cursor: pointer;
+			}
+			.dropbtn-red {
+				background-color: #e32431;
+				color: white;
+				padding: 16px;
+				font-size: 16px;
+				border: none;
+				cursor: pointer;
+			}
+			.dropbtn-green {
+				background-color: #158504;
+				color: white;
+				padding: 16px;
+				font-size: 16px;
+				border: none;
+				cursor: pointer;
+			}
+			.dropbtn-yellow {
+				background-color: #9c8505;
+				color: white;
+				padding: 16px;
+				font-size: 16px;
+				border: none;
+				cursor: pointer;
+			}
+			.dropbtnstat {
+				background-color: #ffffff;
+				color: black;
+				padding: 8px;
+				font-size: 12px;
+				border: none;
+			}
+			.modal {
+				display: none; 
+				position: fixed;
+				z-index: 1;
+				left: 0;
+				top: 0;
+				width: 100%; 
+				height: 100%; 
+				overflow: auto;
+				background-color: rgb(0,0,0); 
+				background-color: rgba(0,0,0,0.4); 
+			}
+			.modal-content {
+				background-color: #fefefe;
+				margin: 15% auto; 
+				padding: 20px;
+				border: 1px solid #888;
+				width: 80%; 
+			}
+			.close {
+				color: #aaa;
+				float: right;
+				font-size: 28px;
+				font-weight: bold;
+			}
+			.close:hover,
+			.close:focus {
+				color: black;
+				text-decoration: none;
+				cursor: pointer;
+			}
+		</style>
+	  
+	</head>
+	<body>
+	<!-- select FIR_ID, Date, Place , category, station from FIR_table where status='new' -->
+	<!-- 	def index():
+			firs=[
+				{
+					'fir_id' : 'FIR001',
+					'date' : '18/08/2019'
+					'place' : 'Bengaluru',
+					'category' : 'Theft',
+					'station' : 'Mahadevapura PS'
+				},
+				{
+					'fir_id' : 'FIR002',
+					'date' : '20/11/2020'
+					'place' : 'Bengaluru',
+					'category' : 'Theft',
+					'station' : 'Bellandur PS'
+				}
+				]
+			return render_template('tab.html', firs=firs)
+
+	
+	-->
+		<table style="width:100%">
+			<tr>
+				<th>FIR ID</th>
+				<th>Date</th>
+				<th>Place</th>
+				<th>Category</th>
+				<th>Station</th>
+				<th>Action</th>
+				
+			</tr>
+			{% for fir in firs %}
+			<tr>
+				
+				<td>{{ fir.fir_id }}</td>	
+				<td>{{ fir.date }}</td>
+				<td>{{ fir.place }}</td>
+				<td>{{ fir.category }}</td>
+				<td>{{ fir.station }} PS</td>
+				<td><button id="myBtn" class="dropbtn">Open FIR</button></td>
+				
+				
+			</tr>
+			{% endfor %}
+		</table>
+		<div id="myModal" class="modal">
+
+		<!-- Modal content -->
+		<div class="modal-content">
+			<span class="close">&times;</span>
+			<p><b><i><u>FIR ID:</u></i></b> 1234</p>
+			<p><b><i><u>Complainant:</u></i></b> Niharika</p>
+			<p><b><i><u>Place and Area:</u></i></b> Mahadevapura, Bengaluru</p>
+			<p><b><i><u>Complaint:</u></i></b> Mobile got stolen in BMTC bus while travelling from Tin Factory to Mahadevapura HPE office.</p> 
+			<p>
+				<button id="submitbtn" type="submit" class="dropbtn-green" onclick="approveFir()">Approve</button> 
+				<button id="rejectbtn" type="submit" class="dropbtn-red" onclick="rejectFir()">Reject</button>
+				<button id="verifybtn" type="submit" class="dropbtn-yellow" onclick="appointmentFIR()">Book Appointment</button>
+			</p>
+			
+			
+		</div>
+	</body>
+	<script>
+		
+		
+		// Get the modal
+		var modal = document.getElementById("myModal");
+
+		// Get the button that opens the modal
+		var btn = document.getElementById("myBtn");
+
+		// Get the <span> element that closes the modal
+		var span = document.getElementsByClassName("close")[0];
+
+		// When the user clicks the button, open the modal 
+		btn.onclick = function() {
+		  modal.style.display = "block";
+		}
+
+		// When the user clicks on <span> (x), close the modal
+		span.onclick = function() {
+		  modal.style.display = "none";
+		}
+
+		// When the user clicks anywhere outside of the modal, close it
+		window.onclick = function(event) {
+		  if (event.target == modal) {
+			modal.style.display = "none";
+		  }
+		}
+		function approveFir(){
+			window.alert("The FIR status is changed to approved. ");
+			document.getElementById("rejectbtn").disabled = true;
+			document.getElementById("verifybtn").disabled = true;
+			document.getElementById("rejectbtn").style.backgroundColor = "#c2bea9";
+			document.getElementById("verifybtn").style.backgroundColor = "#c2bea9";
+			modal.style.display = "none";
+		}
+		function rejectFir(){
+			window.alert("The FIR is rejected. Deleting FIR from database. ");
+			document.getElementById("verifybtn").disabled = true;
+			document.getElementById("submitbtn").disabled = true;
+			modal.style.display = "none";
+			document.getElementById("submitbtn").style.backgroundColor = "#c2bea9";
+			document.getElementById("verifybtn").style.backgroundColor = "#c2bea9";
+		}
+		function appointmentFIR(){
+			window.alert("Please schedule your appointment ");
+			document.getElementById("rejectbtn").disabled = true;
+			document.getElementById("submitbtn").disabled = true;
+			modal.style.display = "none";
+			document.getElementById("submitbtn").style.backgroundColor = "#c2bea9";
+			document.getElementById("rejectbtn").style.backgroundColor = "#c2bea9";
+		}
+		
+	</script>
+</html>
+  
+  
+

@@ -1,0 +1,155 @@
+<!Doctype html>
+<html>
+	<head>
+		<title>e-FIR-portal</title>
+
+		<style>
+			table, th, td {
+				border: 1px solid black;
+				border-collapse: collapse;
+			}
+			th, td {
+				padding: 15px;
+				text-align: center;
+			}
+			th {
+				background-color: #3498DB;
+			}
+			table {
+				border-spacing: 5px;
+				background-color: #d4e2fc;
+			}
+			.dropbtn {
+				background-color: #3498DB;
+				color: white;
+				padding: 16px;
+				font-size: 16px;
+				border: none;
+				cursor: pointer;
+			}
+			.dropbtn-red {
+				background-color: #e32431;
+				color: white;
+				padding: 16px;
+				font-size: 16px;
+				border: none;
+				cursor: pointer;
+			}
+			.dropbtn-green {
+				background-color: #158504;
+				color: white;
+				padding: 16px;
+				font-size: 16px;
+				border: none;
+				cursor: pointer;
+			}
+			.dropbtn-yellow {
+				background-color: #9c8505;
+				color: white;
+				padding: 16px;
+				font-size: 16px;
+				border: none;
+				cursor: pointer;
+			}
+			.dropbtnstat {
+				background-color: #ffffff;
+				color: black;
+				padding: 8px;
+				font-size: 12px;
+				border: none;
+			}
+			.dropbtnsmall {
+				background-color: #57948f;
+				color: white;
+				padding: 8px;
+				font-size: 12px;
+				border: none;
+			}
+			.modal {
+				display: none; 
+				position: fixed;
+				z-index: 1;
+				left: 0;
+				top: 0;
+				width: 100%; 
+				height: 100%; 
+				overflow: auto;
+				background-color: rgb(0,0,0); 
+				background-color: rgba(0,0,0,0.4); 
+			}
+			.modal-content {
+				background-color: #fefefe;
+				margin: 15% auto; 
+				padding: 20px;
+				border: 1px solid #888;
+				width: 80%; 
+			}
+			.close {
+				color: #aaa;
+				float: right;
+				font-size: 28px;
+				font-weight: bold;
+			}
+			.close:hover,
+			.close:focus {
+				color: black;
+				text-decoration: none;
+				cursor: pointer;
+			}
+		</style>
+	  
+	</head>
+	<body>
+	
+		<input type="text" class="form-control" id="p_name" placeholder="Enter FIR ID" name="p_name">
+		<button id="myBtn" class="dropbtnsmall">Open FIR</button>
+				
+		
+		<div id="myModal" class="modal">
+
+		<!-- Modal content -->
+		<div class="modal-content">
+			<span class="close">&times;</span>
+			<p><b><i><u>FIR ID:</u></i></b> 1234</p>
+			<p><b><i><u>Complainant:</u></i></b> Niharika</p>
+			<p><b><i><u>Date and Time:</u></i></b> 03/04/2020 13:00:00</p>
+			<p><b><i><u>Category:</u></i></b> Theft</p>
+			<p><b><i><u>Complaint:</u></i></b> Purse went missing  in BMTC bus while travelling from Bellandur to Mahadevapura</p> 
+			<p><b><i><u>Status:</u></i></b> Approved</p> 
+		</div>
+	</body>
+	<script>
+		
+		
+		// Get the modal
+		var modal = document.getElementById("myModal");
+
+		// Get the button that opens the modal
+		var btn = document.getElementById("myBtn");
+
+		// Get the <span> element that closes the modal
+		var span = document.getElementsByClassName("close")[0];
+
+		// When the user clicks the button, open the modal 
+		btn.onclick = function() {
+		  modal.style.display = "block";
+		}
+
+		// When the user clicks on <span> (x), close the modal
+		span.onclick = function() {
+		  modal.style.display = "none";
+		}
+
+		// When the user clicks anywhere outside of the modal, close it
+		window.onclick = function(event) {
+		  if (event.target == modal) {
+			modal.style.display = "none";
+		  }
+		}
+		
+		
+	</script>
+</html>
+  
+  
+
