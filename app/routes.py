@@ -32,13 +32,17 @@ def file_fir():
         db_functions.insert_fir(form)
         csv_text= fid+","+c_name+","+c_date+","+c_time+","+c_place+","+c_cat+","+c_text 
         hashval = db_functions.store_csv(fid,csv_text)
-        return csv_text+" "+hashval
+        return redirect(url_for('success')) 
+@app.route('/success') 
+def success():
+    return 'FIR filed successfully'
+
 
 @app.route('/tab')
 def tabnew():
     firs=db_functions.select_firs('new')
     print(firs)
-    return render_template('tab.html')
+    return render_template('tab1.html')
 
 @app.route('/tab1')
 def tab1new():

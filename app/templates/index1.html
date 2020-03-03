@@ -108,7 +108,7 @@
 		function newRequestClick(){
 			sessionStorage.setItem("status", "draft");
 			localStorage["key"] = 'new';
-			location.href = "{{ url_for('tabnew') }}";
+			location.href = "{{ url_for('tab1new') }}";
 		}
 		function approveRequestsClick(){
 			sessionStorage.setItem("status", "approved");
@@ -116,7 +116,7 @@
 		}
 		function rejectRequestsClick(){
 			sessionStorage.setItem("status", "rejected");
-			location.href = "{{ url_for('tabnew') }}";
+			location.href = "{{ url_for('tab1new') }}";
 		}
 		function searchRequestsClick(){
 			location.href = "{{ url_for('search_fir') }}";
